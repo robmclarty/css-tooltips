@@ -4,7 +4,7 @@
 
 ## Demo
 
-http://robmclarty.github.io/css-tooltips
+[http://robmclarty.github.io/css-tooltips](http://robmclarty.github.io/css-tooltips)
 
 ## Usage
 
@@ -18,9 +18,11 @@ default is single-line).
 
 ## Example
 
-  <span class="tooltip left" data-tooltip="This is a single-line tooltip!">Some text</span>
+````
+<span class="tooltip left" data-tooltip="This is a single-line tooltip!">Some text</span>
 
-  <span class="tooltip wrap left" data-tooltip="This is a multi-line tooltip!">Some text</span>
+<span class="tooltip wrap left" data-tooltip="This is a multi-line tooltip!">Some text</span>
+````
 
 ## Caveats
 
