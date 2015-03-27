@@ -33,6 +33,6 @@ class names to something else if needed ;)
 
 ## Author
 
-Rob McLarty
-@robmclarty
-//robmclarty.com
+Rob McLarty  
+[http://twitter.com/robmclarty](@robmclarty)  
+[http://robmclarty.com](//robmclarty.com)
