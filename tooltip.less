@@ -1,0 +1,128 @@
+@fontSize: 14px;
+@arrowSize: 8px;
+
+.tooltip,
+.tooltip:before,
+.tooltip:after { // ensure border-box is enabled for each part
+  -webkit-box-sizing: border-box; 
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    &:before,
+    &:after {
+      z-index: 99999; // always on top
+      position: absolute;
+      display: inline-block;
+      pointer-events: none;
+    }
+    &:before { // arrow
+      content: "";
+      border-style: solid;
+      border-width: @arrowSize;
+    }
+    &:after { // tooltip content box
+      padding: (@fontSize / 2) 9px;
+      content: attr(data-tooltip);
+      white-space: nowrap;
+      font-size: @fontSize;
+      color: #fff;
+      background: #333;
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &.top:hover {
+    &:before {
+      top: 0;
+      left: 50%;
+      margin-left: -@arrowSize;
+      margin-top: -@arrowSize;
+      border-color: #333 transparent transparent transparent;
+      border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+    }
+    &:after {
+      top: 0;
+      left: 50%;
+      height: @fontSize * 2;
+      transform: translate(-50%, -36px);
+    }
+  }
+  &.right:hover {
+    &:before {
+      bottom: 50%;
+      right: 0;
+      margin-right: -@arrowSize;
+      margin-bottom: -@arrowSize;
+      border-color: transparent #333 transparent transparent;
+      border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+    }
+    &:after {
+      bottom: 0;
+      right: -@arrowSize;
+      height: @fontSize * 2;
+      transform: translate(100%, 6px);
+    }
+  }
+  &.bottom:hover {
+    &:before {
+      bottom: 0;
+      left: 50%;
+      margin-left: -@arrowSize;
+      margin-bottom: -@arrowSize;
+      border-color: transparent transparent #333 transparent;
+      border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+    }
+    &:after {
+      bottom: 0;
+      left: 50%;
+      height: @fontSize * 2; // 28px - affects the vertical offset for translate
+      transform: translate(-50%, 36px); // translate's percentage is based on element content rather than container ;)
+    }
+  }
+  &.left:hover {
+    &:before {
+      bottom: 50%;
+      left: 0;
+      margin-left: -@arrowSize;
+      margin-bottom: -@arrowSize;
+      border-color: transparent transparent transparent #333;
+      border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+    }
+    &:after {
+      bottom: 0;
+      left: -@arrowSize;
+      height: @fontSize * 2;
+      transform: translate(-100%, 6px);
+    }
+  }
+
+  // The default style is a single-line tooltip; `wrap` makes it work as a vertically
+  // expanding box that will fit a lot of content and wrap on multiple lines.
+  &.wrap {
+    &:hover:after {
+      width: 200px;
+      height: auto;
+      white-space: normal;
+    }
+    &.top:hover:after {
+      margin-top: -@arrowSize;
+      transform: translate(-50%, -100%);
+    }
+    &.right:hover:after {
+      transform: translate(100%, 50%);
+    }
+    &.bottom:hover:after {
+      margin-bottom: -@arrowSize;
+      transform: translate(-50%, 100%);
+    }
+    &.left:hover:after {
+      transform: translate(-100%, 50%);
+    }
+  }
+}
